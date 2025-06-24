@@ -1,58 +1,52 @@
 <!DOCTYPE html>
-<title>Welcome Public Services</title>
+<html>
+<head>
+  <title>Public Services</title>
+  <script>
+    function goToLink(select) {
+      const url = select.value;
+      if (url) {
+        window.open(url, "_blank"); // Opens in a new tab
+      }
+    }
+  </script> 
 </head>
 <body>
-<h1>ARUN KUMAR REDDY</h1>
-<a href=" https://gramawardsachivalayam.ap.gov.in/GSWS/#!/CitizenSelfEkyc " target="_blank">GSWS HH Citizen Self Ekyc </a>
+  <h2>Public Services</h2>
+
+  <a href="https://nregastrep.nic.in/netnrega/loginframegp.aspx?lflag=eng&page=C&state_code=02&Digest=MVdbKZ+JNjWeEXnWJ/J4bQ" target="_blank">The Mahatma Gandhi National Rural Employment Guarantee Act Know Worker's Attendance/Payments</a>
+  <br>  
+
+  <a href="https://aepos.ap.gov.in/SRC_Trans_Int.jsp" target="_blank">Ration card to rice card search status</a>
+<br>  
+  <a href="https://meebhoomi.ap.gov.in/" target="_blank">Visit AP Mee Bhoomi</a>
 <br>
-    <a href="https://annadathasukhibhava.ap.gov.in/know-your-status " target="_blank">Annadata Sukhi Bhava status </a>
+<a href="https://pmkisan.gov.in/" target="_blank">PM Kisan Samman Nidhi Portal</a>
 <br>
-<a href="https://vswsonline.ap.gov.in/#/home " target="_blank">GSWS Ap Seva Portal </a>
-<br>
-<a href="https://aepos.ap.gov.in/SRC_Trans_Int.jsp  " target="_blank">Ration card to rice card search status </a>
-<br>
-<a href=" https://nregastrep.nic.in/netnrega/loginframegp.aspx?lflag=eng&page=C&state_code=02&Digest=MVdbKZ+JNjWeEXnWJ/J4bQ "target="_blank"> The Mahatma Gandhi National Rural Employment Guarantee Act Payment Status </a>
+<a href="https://eshram.gov.in/" target="_blank"> REGISTER on eShram-Self Registration</a>
 
 
+
+  <h2>Visit Websites</h2>
+  <select onchange="goToLink(this)">
+    <option value="">Select GSWS-GramaWard Sachivalayam Services --</option>
+    <option value="https://vswsonline.ap.gov.in/#/home"> AP Seva portal</option>
+    <option value="https://gramawardsachivalayam.ap.gov.in/GSWS/#!/CitizenSelfEkyc">Household mapping Citizen Self Ekyc</option>
+    <option value="https://www.youtube.com">YouTube</option>
+  </select>
 <h1>Aadhaar Services</h1>
 
-<a href="https://myaadhaar.uidai.gov.in/" target="_blank">Aadhaar Card Log in</a>
-<br>
-<a href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar/en" target="_blank">Aadhaar Card Download</a>
-<br>
-<a href="https://myaadhaar.uidai.gov.in/check-aadhaar-validity/en" target="_blank">Aadhaar Card Mobile Number Checkin</a>
-<br>
-<a href="https://myaadhaar.uidai.gov.in/genricPVC/en" target="_blank">Order Aadhaar PVC Card</a>
-<br>
-<a href="https://myaadhaar.uidai.gov.in/checkStatus/en" target="_blank">Check Aadhaar PVC Card Order Status</a>
+<select onchange="goToLink(this)">
+<option value="">-- Select Aadhaar Services --</option>
+    <option value="https://myaadhaar.uidai.gov.in/">Aadhaar Card Login Portal</option>
+<option value="https://myaadhaar.uidai.gov.in/check-aadhaar-validity/en">Check Aadhaar Validity -Mobile number</option>
+<option value="https://myaadhaar.uidai.gov.in/genricPVC/en">Order Aadhaar PVC Card</option>
 
-<h1>Pan Card Services</h1>
-<a href="https://www.pan.utiitsl.com/PAN_ONLINE/homereprint" target="_blank">uTI Facility for reprint PAN Card</a>
-<br>
-<a href="https://www.onlineservices.nsdl.com/paam/ReprintEPan.html" target="_blank">NSDL Request for Reprint of PAN Card</a>
-<br>
-<a href="https://www.pan.utiitsl.com/PAN_ONLINE/homeaddresschange" target="_blank">UTI Pan 2.0 upgrade</a>
-<br>
-<a href="https://www.pan.utiitsl.com/PAN_ONLINE/homeaddresschange" target="_blank">Nsdl pan 2.0 Address Update Facility</a>
-<br>
+</select>
+    
 
 
 
 
-
-
-
-
-
-
-
-<a href=" https://pmkisan.gov.in/ " target="_blank">PM Kisan Samman Nidhi Portal </a>
-<br>
-<a href=" https://beneficiary.nha.gov.in/ " target="_blank"> PMJAY - Beneficiary Portal </a>
-<br>
-<a href=" https://www.eka.care/ayushman-bharat/create-abha-abdm-ndhm-health-id " target="_blank"> Create ABHA Health ID</a>
-<br>
-<a href=" https://eshram.gov.in/ " target="_blank">REGISTER on eShram </a>
-<br>
-<button
-<a href=" https://tools.jobassam.in/image-resizer/ " target="_blank"> Resize Photos Online</a>
+</body>
+</html>
