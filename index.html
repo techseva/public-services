@@ -7,9 +7,12 @@
   <title>Services for People</title>
   <style>
     body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f7f9; color:#333; }
+    /* Global responsive helpers */
+    *, *::before, *::after { box-sizing: border-box; }
+    img { max-width: 100%; height: auto; display: block; }
     header { background:#0077b6; color:white; padding:20px; text-align:center; }
     nav { background:#023e8a; display:flex; justify-content:center; flex-wrap: wrap; padding:8px 0;}
-    nav a { color:white; padding:8px 12px; text-decoration:none; font-weight:bold; display:block; font-size:14px; margin:0 4px; }
+    nav a { color:white; padding:8px 12px; text-decoration:none; font-weight:bold; display:block; font-size:clamp(13px, 1.6vw, 16px); margin:0 4px; }
     nav a:hover, nav a.active { background:#0077b6; border-radius:6px; }
 
     .search-bar { margin:20px auto; max-width:400px; display:flex; }
@@ -33,6 +36,10 @@
     .expandable {
       display:block; background:#0077b6; color:white; text-decoration:none; padding:8px;
       border-radius:6px; margin:6px 0; font-size:14px;
+      /* allow wrapping on long labels */
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .sub-links a:hover { background:#023e8a; }
 
@@ -51,6 +58,10 @@
     .more-links a {
       display:block; background:#3aa1df; color:white; text-decoration:none; padding:7px 8px;
       border-radius:6px; margin:6px 0; font-size:13px;
+      /* allow wrapping */
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .more-links a:hover { background:#1f7bb2; }
 
@@ -60,6 +71,67 @@
     .welcome { text-align:center; padding:50px 20px; }
     .welcome h2 { font-size:28px; color:#0077b6; }
     .welcome p { font-size:18px; margin-top:10px; }
+
+    /* Home hero highlight + buttons */
+    .hero-title {
+      font-size: clamp(24px, 5vw, 34px); line-height:1.2; margin:0; font-weight:800;
+    }
+    .hero-title .highlight {
+      background: linear-gradient(90deg,#ffd166,#fca311);
+      color:#111; padding:2px 8px; border-radius:8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .cta-buttons { margin-top:18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .btn {
+      background:#0077b6; color:#fff; border:none; padding:10px 16px; border-radius:8px;
+      font-weight:bold; cursor:pointer; box-shadow:0 3px 8px rgba(0,0,0,0.1); transition: background .2s ease;
+    }
+    .btn.secondary { background:#023e8a; }
+    .btn:hover { background:#005f91; }
+
+    .quick-actions {
+      margin:26px auto 0; max-width:900px; display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;
+      justify-items: center; /* center items so single button doesn't stretch full width */
+    }
+    .quick-actions a {
+      display:block; text-decoration:none; text-align:center; background:#ffffff; color:#023e8a;
+      padding:12px; border-radius:10px; font-weight:700; border:1px solid #e6eef5;
+      box-shadow:0 4px 10px rgba(0,0,0,0.06);
+      /* make long text flexible */
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      line-height: 1.3;
+      max-width: 420px; /* default; overridden by media queries */
+    }
+    .quick-actions a:hover { background:#f0f7ff; }
+
+    /* Respect user motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      .welcome { padding: 36px 14px; }
+      .welcome p { font-size: 16px; }
+      .card { padding: 16px; }
+      .sub-links a { font-size: 13px; padding: 8px; }
+      .more-links a { font-size: 12px; padding: 7px 8px; }
+      .quick-actions { gap: 10px; }
+      .quick-actions a { max-width: 280px; padding: 10px 12px; }
+    }
+
+    /* Tablets */
+    @media (min-width: 481px) and (max-width: 1023px) {
+      .quick-actions a { max-width: 520px; }
+    }
+
+    /* Large screens */
+    @media (min-width: 1024px) {
+      .quick-actions a { max-width: 640px; }
+    }
 
 .grama-quick {
   margin: 20px 0;
@@ -93,6 +165,11 @@
   text-decoration: none;
   font-weight: bold;
   transition: background 0.3s;
+  /* make long text flexible */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.3;
 }
 
 .grama-buttons a:hover {
@@ -133,10 +210,15 @@
 
   <!-- HOME -->
   <section id="home" class="welcome">
-    <h2>👋 Welcome to Services for People Portal</h2>
-    <p>Explore services like AP Grama/Ward Sachivalayam, Ap scheme Stutas Services, Aadhaar, Banking,Utility Services,File Converting All Editing Tools,Available in One Place
-.</p>
-    <p>Use the navigation above to get started.</p>
+    <h1 class="hero-title">👋 Welcome — <span class="highlight">Services for People</span></h1>
+    <p>All key services in one place: AP Grama/Ward Sachivalayam, Aadhaar, PAN, Banking, Utility, PDF/JPG tools and more.</p>
+    <div class="cta-buttons">
+    
+    </div>
+    <div class="quick-actions">
+      <a href="https://nregastrep.nic.in/netnrega/loginframegp.aspx?lflag=eng&page=C&state_code=02&Digest=MVdbKZ+JNjWeEXnWJ/J4bQ" target="_blank">The Mahatma Gandhi National Rural Employment Guarantee Act Job card - Payment Details</a>
+     
+    </div>
   </section>
 
   <!-- SERVICES -->
@@ -149,7 +231,7 @@
 <a href="https://aepos.ap.gov.in/SRC_Trans_Int.jsp" target="_blank">AP Rice Card Search</a>
 <a href="https://meebhoomi.ap.gov.in/" target="_blank">AP-Mee Bhoomi 1b</a></div>
   </div>
-</div>
+ 
 
     <!-- Grama/Ward Sachivalayam -->
     <div class="card">
@@ -256,7 +338,7 @@
     <a href="https://payments.billdesk.com/MercOnline/SPDCLController" target="_blank">APSPDCL</a>
           <a href="https://www.plansinfo.com/" target="_blank">Mobile, DTH and Broadband Plans Check</a>
 
-          <div class="more-links" id="dlMore">
+          <div class="more-links" id="dlMore2">
             <a href="https://parivahan.gov.in/parivahan//en/content/driving-licence-1" target="_blank">DL Info</a>
           </div>
 
@@ -315,11 +397,7 @@
             <a href="https://www.simpleimageresizer.com/resize-image-to-kb" target="_blank">Image Resizer To Kilobytes</a>
                       <a href="https://convert.town/image-dpi" target="_blank">Change the DPI of Image</a>
                               <a href="https://image.pi7.org/resize-image-to-6cmx2cm" target="_blank">Resize Image to 6cm x 2cm (Signature Resizer)</a>
-                              <a href="" target="_blank"></a>
-                              <a href="" target="_blank"></a>
-                              <a href="" target="_blank"></a>
-                              <a href="" target="_blank"></a>
-
+                           
       
             
             
@@ -437,7 +515,20 @@
         }
       });
     });
+
+    /* ========== Home CTA buttons switch tabs ========== */
+    const goServices = document.getElementById('goServices');
+    const goOther = document.getElementById('goOther');
+    const toServicesTab = document.querySelector('.tab-link[data-target="services"]');
+    const toOtherTab = document.querySelector('.tab-link[data-target="other"]');
+    goServices && toServicesTab && goServices.addEventListener('click', () => {
+      toServicesTab.click();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    goOther && toOtherTab && goOther.addEventListener('click', () => {
+      toOtherTab.click();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
-
