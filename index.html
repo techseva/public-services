@@ -192,31 +192,6 @@
 
 
 
-  /* Top-right title + datetime */
-  .top-right-info {
-    position: fixed;
-    top: 60px;
-    right: 10px;
-    background: #0077b6;
-    color: #fff;
-    padding: 8px 10px;
-    border-radius: 10px;
-    text-align: right;
-    z-index: 1000;
-    line-height: 1.2;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
-  .top-right-info .title { font-weight: 800; font-size: 14px; }
-  .top-right-info .datetime { font-size: 12px; font-variant-numeric: tabular-nums; opacity: 0.95; }
-
-  @media (max-width: 480px) {
-    .top-right-info { top: 48px; right: 6px; padding: 6px 8px; }
-    .top-right-info .title { font-size: 13px; }
-    .top-right-info .datetime { font-size: 11px; }
-  }
-
   </style>
 </head>
 <body>
@@ -228,11 +203,6 @@
     <a href="#" class="tab-link" data-target="other">OTHER SERVICES</a>
   </nav>
 
-  <!-- Top-right title + live date/time -->
-  <div class="top-right-info" aria-live="polite">
-    <div class="title">Services for People</div>
-    <div id="liveDateTime" class="datetime"></div>
-  </div>
 
   <!-- SEARCH (shown only on Services/Other) -->
   <div class="search-bar hidden" id="searchBar">
@@ -313,6 +283,7 @@
 <a href="https://onlineservices.proteantech.in/paam/endUserAddressUpdate.html" target="_blank">Address Update Facility Aadhar eKYC</a>
 <a href="https://onlineservices.proteantech.in/paam/requestAndDownloadEPAN.html" target="_blank">e-PAN Card Download</a>
 
+          <a href="" target="_blank"></a>
           </div>
         
         </div>
@@ -327,6 +298,7 @@
                   <a href="https://www.npci.org.in/" target="_blank">National Payments Corporation of India (NPCI)</a>
                 <a href="https://www.bankbazaar.com/ifsc-code.html" target="_blank">Search for IFSC/MICR codes</a>
      
+          <a href="" target="_blank"></a>
           </div>
         
         </div>
@@ -559,22 +531,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    /* ========== Live Date/Time (top-right) ========== */
-    function updateDateTime() {
-      const el = document.getElementById('liveDateTime');
-      if (!el) return;
-      const now = new Date();
-      const dateStr = now.toLocaleDateString('en-IN', {
-        weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'
-      });
-      const timeStr = now.toLocaleTimeString('en-IN', {
-        hour12: true, hour: '2-digit', minute: '2-digit'
-      });
-      el.textContent = `${dateStr} • ${timeStr}`;
-    }
-    updateDateTime();
-    setInterval(updateDateTime, 1000);
+   
   </script>
 </body>
 </html>
-
