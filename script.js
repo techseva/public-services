@@ -1,14 +1,14 @@
 // --- FIREBASE CONFIGURATION ---
 // We try to get it from LocalStorage (set by setup.html) first.
 let savedConfig = localStorage.getItem('firebaseConfigData');
-let firebaseConfig = savedConfig ? JSON.parse(savedConfig) : {
-    apiKey: "YOUR_API_KEY_HERE",
-    authDomain: "your-project-id.firebaseapp.com",
-    databaseURL: "https://your-project-id-default-rtdb.firebaseio.com",
-    projectId: "your-project-id",
-    storageBucket: "your-project-id.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef123456"
+const firebaseConfig = {
+  apiKey: "AIzaSyBN_ZnMYbKYGV7mk4ugFRRzA94U1oMqksU",
+  authDomain: "smart-public-services-8abf6.firebaseapp.com",
+  databaseURL: "https://smart-public-services-8abf6-default-rtdb.firebaseio.com",
+  projectId: "smart-public-services-8abf6",
+  storageBucket: "smart-public-services-8abf6.firebasestorage.app",
+  messagingSenderId: "540029989204",
+  appId: "1:540029989204:web:e1b59514c32912d57cd8c1"
 };
 
 // Application State
@@ -617,3 +617,4 @@ function renderWhatsappSection() {
     // I will re-paste the full function below properly.
 }
 // END OF FILE - OVERWRITING FULLY
+
