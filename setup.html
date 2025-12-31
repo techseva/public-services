@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Setup Wizard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #E3F2FD;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .wizard-card {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .step-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: #0D47A1;
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        p {
+            color: #546E7A;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            background: #E1F5FE;
+            color: #0277BD;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-family: monospace;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .icon-display {
+            font-size: 40px;
+            margin: 20px 0;
+            color: #1976D2;
+        }
+
+        button {
+            background: #1976D2;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1565C0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
+        }
+
+        button.secondary {
+            background: white;
+            color: #78909C;
+            border: 2px solid #CFD8DC;
+            margin-top: 10px;
+        }
+
+        button.secondary:hover {
+            background: #ECEFF1;
+            transform: none;
+            box-shadow: none;
+            color: #546E7A;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 2px solid #BBDEFB;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            border-color: #1976D2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dot-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #CFD8DC;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #1976D2;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wizard-card">
+        <div class="dot-nav" id="dotNav">
+            <!-- 6 Dots for 6 Steps -->
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <!-- STEP 1: Welcome -->
+        <div class="step-content active" id="step1">
+            <h2>Easy Setup Guide 🚀</h2>
+            <p>I will guide you to put your app "Online" for free. It takes about 2 minutes.</p>
+            <div class="icon-display">☁️</div>
+            <button onclick="nextStep(2)">Start Now</button>
+        </div>
+
+        <!-- STEP 2: Open Site -->
+        <div class="step-content" id="step2">
+            <h2>1. Open Firebase</h2>
+            <p>Click the button below to open the Google Console. Login with your Gmail if asked.</p>
+            <button onclick="window.open('https://console.firebase.google.com/', '_blank'); nextStep(3)">Open Firebase
+                🔗</button>
+            <button class="secondary" onclick="nextStep(3)">I already opened it</button>
+        </div>
+
+        <!-- STEP 3: Create Project -->
+        <div class="step-content" id="step3">
+            <h2>2. Create Project</h2>
+            <p>1. Click <strong>"Create a project"</strong>.<br>2. Name it <strong>"SPS-App"</strong>.<br>3. Click
+                "Continue" and "Create".</p>
+            <div class="icon-display">📁</div>
+            <button onclick="nextStep(4)">Done! Next Step</button>
+            <button class="secondary" onclick="prevStep(2)">Back</button>
+        </div>
+
+        <!-- STEP 4: Get Code -->
+        <div class="step-content" id="step4">
+            <h2>3. Get the Code</h2>
+            <p>1. Click the <strong>Web Icon &lt;/&gt;</strong>.<br>2. Type "App" and click Register.<br>3.
+                <strong>COPY</strong> the text block that appears below.</p>
+            <div class="icon-display">&lt;/&gt;</div>
+            <button onclick="nextStep(5)">I Copied It!</button>
+            <button class="secondary" onclick="prevStep(3)">Back</button>
+        </div>
+
+        <!-- STEP 5: Create Database (CRITICAL) -->
+        <div class="step-content" id="step5">
+            <h2>4. Create Database</h2>
+            <p style="font-size:14px; color:#D84315;">⚠️ IMPORTANT STEP!</p>
+            <p style="text-align:left; font-size:14px; margin:0 auto; width:90%;">
+                1. Go to <strong>Build</strong> -> <strong>Realtime Database</strong>.<br>
+                2. Click <strong>Create Database</strong>.<br>
+                3. Choose <strong>Start in Test Mode</strong>.<br>
+                4. Click <strong>Enable</strong>.
+            </p>
+            <button onclick="nextStep(6)" style="margin-top:20px;">I Enabled It!</button>
+            <button class="secondary" onclick="prevStep(4)">Back</button>
+        </div>
+
+        <!-- STEP 6: Connect -->
+        <div class="step-content" id="step6">
+            <h2>5. Connect!</h2>
+            <p>Paste the code you copied in Step 3 here:</p>
+            <textarea id="configInput" placeholder='const firebaseConfig = { ... }'></textarea>
+            <button onclick="saveConfig()">CONNECT NOW</button>
+            <button class="secondary" onclick="prevStep(5)">Back</button>
+            <p id="status" style="font-size:14px; margin-top:10px; font-weight:bold;"></p>
+        </div>
+
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        function updateUI() {
+            // Hide all
+            for (let i = 1; i <= totalSteps; i++) {
+                document.getElementById('step' + i).classList.remove('active');
+                document.querySelectorAll('.dot')[i - 1].classList.remove('active');
+            }
+            // Show current
+            document.getElementById('step' + currentStep).classList.add('active');
+            document.querySelectorAll('.dot')[currentStep - 1].classList.add('active');
+        }
+
+        function nextStep(step) {
+            currentStep = step;
+            updateUI();
+        }
+
+        function prevStep(step) {
+            currentStep = step;
+            updateUI();
+        }
+
+        function saveConfig() {
+            const input = document.getElementById('configInput').value;
+            const status = document.getElementById('status');
+
+            if (!input.includes('apiKey') || !input.includes('{')) {
+                status.style.color = 'red';
+                status.innerText = "That doesn't look right. Please paste the whole block starting with 'const firebaseConfig'.";
+                return;
+            }
+
+            try {
+                // Extract values using Regex to be safe against bad formatting
+                const getVal = (key) => {
+                    const match = input.match(new RegExp(key + "\\s*:\\s*[\"']([^\"']+)[\"']"));
+                    return match ? match[1] : null;
+                };
+
+                const config = {
+                    apiKey: getVal('apiKey'),
+                    authDomain: getVal('authDomain'),
+                    databaseURL: getVal('databaseURL'),
+                    projectId: getVal('projectId'),
+                    storageBucket: getVal('storageBucket'),
+                    messagingSenderId: getVal('messagingSenderId'),
+                    appId: getVal('appId')
+                };
+
+                if (!config.apiKey) throw new Error("Key not found");
+
+                localStorage.setItem('firebaseConfigData', JSON.stringify(config));
+
+                status.style.color = 'green';
+                status.innerText = "🎉 SUCCESS! Connected! Redirecting...";
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+
+            } catch (e) {
+                status.style.color = 'red';
+                status.innerText = "Oops, couldn't find the correct keys. Try copying again.";
+            }
+        }
+    </script>
+</body>
+
+</html>
