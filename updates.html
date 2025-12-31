@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Public Services - Updates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-context="updates">
+
+    <!-- Side Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Side Menu Drawer -->
+    <aside class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h3>Smart Public Services</h3>
+        </div>
+        <ul class="menu-list">
+            <li id="adminToggleBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
+                    </path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Disable Admin Mode
+            </li>
+            <li onclick="shareApp()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                    <polyline points="16 6 12 2 8 6"></polyline>
+                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                </svg>
+                Share app with friends
+            </li>
+            <li onclick="window.location.href='#'">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.5 12H16c-.7 2-2 3-4 3s-3.3-1-4-3H2.5"></path>
+                    <path
+                        d="M5.5 5.1L2 12v6c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-6l-3.5-6.9A2 2 0 0 0 16.7 4H7.3a2 2 0 0 0-1.8 1.1z">
+                    </path>
+                </svg>
+                Join our Telegram Channel
+            </li>
+            <li onclick="window.location.href='#'">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                    </polygon>
+                </svg>
+                Rate our app
+            </li>
+            <li onclick="window.location.href='#'">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                Privacy Policy
+            </li>
+            <li onclick="window.close()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                    <line x1="12" y1="2" x2="12" y2="12"></line>
+                </svg>
+                Exit
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Header / App Bar -->
+    <header class="app-bar">
+        <div class="app-bar-left">
+            <button class="icon-button" aria-label="Menu" id="menuBtn">
+                <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <h1 class="app-title">AP Digital Services</h1>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <button class="text-button" onclick="shareApp()">SHARE APP</button>
+
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-container">
+        <a href="updates.html" class="tab active">UPDATES</a>
+        <a href="index.html" class="tab">DIGITAL SERVICES</a>
+        <div class="tab-indicator" style="transform: translateX(0%); width: 50%;"></div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="view-container">
+
+        <!-- WhatsApp Manamitra Section (Static Features) -->
+        <section class="whatsapp-section">
+            <p class="whatsapp-title">
+                ఆంధ్రప్రదేశ్ ప్రభుత్వ <strong style="color:black;">మనమిత్ర WhatsApp సేవ</strong> ద్వారా ముఖ్యమైన
+                పౌరసేవలు మీ ఫోన్లో పొందండి దీనికోరకు ఈ క్రింది బటన్ నొక్కండి.
+            </p>
+            <a href="https://wa.me/919552300009" class="btn-whatsapp" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+                Open Whatsapp Manamitra
+            </a>
+            <a href="https://wa.me/919552300009" class="whatsapp-link-text">Open Whatsapp Manamitra</a>
+
+            <div class="note-text">
+                <strong>Note:</strong> The above link to WhatsApp chat redirects to official Government WhatsApp number
+                (+91 95523 000009) of Andhra Pradesh state used for various services provided to citizens through
+                Whatsapp E-Governance, the authenticity of the mobile number can be verified in the WhatsApp
+                application.
+            </div>
+        </section>
+
+        <!-- Updates List -->
+        <section id="updates-list">
+            <!-- Dynamic Updates will appear here first -->
+            <div id="dynamic-updates"></div>
+
+            <!-- Static Updates from Image -->
+            <div class="update-card">
+                <h3>💥ఓటర్ అప్డేట్ !</h3>
+                <p>Posted on 23/09/2025 at 10.00 PM</p>
+                <div class="update-body">
+                    - <strong style="color:#d32f2f;">ఓటర్ లిస్ట్ లో మీ పేరు ఉందో లేదో ఈ క్రింది లింకు ద్వారా
+                        తెలుసుకోండి</strong>
+                    <a href="https://electoralsearch.eci.gov.in/" target="_blank">👉
+                        https://electoralsearch.eci.gov.in/</a>
+                </div>
+            </div>
+
+            <div class="update-card">
+                <h3>💥ఆధార్ కీలక అప్డేట్ !</h3>
+                <p>Posted on 22/09/2025 at 10.00 PM</p>
+                <div class="update-body">
+                    ☑️ మరోసారి గడువు పొడగించిన ఆధార్ సంస్థ. ఉచితంగా ఆధార్ అప్డేట్ చేసుకొనుటకు డిసెంబర్ 14 వరకు అవకాశం
+                    కల్పించారు.
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Floating Action Button -->
+    <div class="fab" id="addBtn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h3 class="modal-header">Add New Update</h3>
+            <div class="form-group">
+                <label>Heading (Title)</label>
+                <input type="text" id="inpTitle" placeholder="e.g., Alert">
+            </div>
+
+            <!-- Extra Field for Button Text (Hidden by default) -->
+            <div class="form-group" id="groupBtnText" style="display:none;">
+                <label>Button/Link Text</label>
+                <input type="text" id="inpBtnText" placeholder="Open Whatsapp Manamitra">
+            </div>
+
+            <div class="form-group">
+                <label>Subtitle (Description)</label>
+                <textarea id="inpBody" rows="4" placeholder="Enter details..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Link URL (Optional)</label>
+                <input type="text" id="inpLinkUrl" placeholder="https://...">
+            </div>
+
+            <div class="form-group">
+                <label>Open In</label>
+                <select id="inpOpenType" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd;">
+                    <option value="_blank">New Tab (External Browser)</option>
+                    <option value="_self">Inside App (Same Tab)</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancelBtn">Cancel</button>
+                <button class="btn-primary" id="saveBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

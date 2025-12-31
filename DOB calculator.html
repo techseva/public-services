@@ -1,0 +1,114 @@
+   ARUN KUMAR REDDY    
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date of Birth Age Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .dob-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .dob-container input {
+      width: 80px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid red;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+   
+    }
+
+    @media (max-width: 500px) {
+      .dob-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Date of Birth Age Calculator</h1>
+
+  <div class="dob-container">
+    <input type="number" id="day" placeholder="Day" min="1" max="31">
+    <input type="number" id="month" placeholder="Month" min="1" max="12">
+    <input type="number" id="year" placeholder="Year" min="1900" max="2099">
+  </div>
+
+  <button onclick="calculateAge()">Calculate Age</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateAge() {
+      const day = parseInt(document.getElementById("day").value);
+      const month = parseInt(document.getElementById("month").value);
+      const year = parseInt(document.getElementById("year").value);
+
+      if (!day || !month || !year) {
+        document.getElementById("result").innerHTML = "Please fill all fields.";
+        return;
+      }
+
+      const birthDate = new Date(year, month - 1, day);
+      const today = new Date();
+
+      if (birthDate > today) {
+        document.getElementById("result").innerHTML = "Birth date cannot be in the future.";
+        return;
+      }
+
+      let ageYears = today.getFullYear() - birthDate.getFullYear();
+      let ageMonths = today.getMonth() - birthDate.getMonth();
+      let ageDays = today.getDate() - birthDate.getDate();
+
+      if (ageDays < 0) {
+        ageMonths--;
+        ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+      }
+
+      if (ageMonths < 0) {
+        ageYears--;
+        ageMonths += 12;
+      }
+
+      const totalDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+
+      document.getElementById("result").innerHTML = 
+        `Age: <strong>${ageYears}</strong> years, <strong>${ageMonths}</strong> months, <strong>${ageDays}</strong> days<br>
+        Total Days: <strong>${totalDays}</strong> days`;
+    }
+  </script>
+
+</body>
+</html>
