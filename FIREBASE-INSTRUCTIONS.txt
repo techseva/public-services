@@ -1,0 +1,47 @@
+================================================================
+   STEP-BY-STEP FIREBASE SETUP GUIDE
+================================================================
+
+1. LOG IN
+   - Go to: https://console.firebase.google.com/
+   - Sign in with your Google Account.
+
+2. CREATE PROJECT
+   - Click the big box that says "Create a project" (or "Add project").
+   - Enter a name: "AP-Digital-Services" (or anything you like).
+   - Click "Continue".
+   - Disable "Google Analytics" (toggle the switch off), then click "Create project".
+   - Wait for it to finish, then click "Continue".
+
+3. ADD APP (The important part!)
+   - You will see 3 circular white icons: iOS, Android, and Web (</>).
+   - Click the "Web" icon that looks like this: </>
+   - App nickname: Enter "My Website".
+   - Leave "Firebase Hosting" UNCHECKED.
+   - Click "Register app".
+
+4. COPY THE CODE
+   - You will see a block of code under "Use npm".
+   - Look for the part that starts with "const firebaseConfig = {".
+   - Highlight and COPY everything from "const firebaseConfig = {" down to "};".
+   - It looks like this:
+     const firebaseConfig = {
+       apiKey: "AIzaSy...",
+       authDomain: "...",
+       ...
+     };
+
+5. PASTE INTO SETUP TOOL
+   - Open the "setup.html" file in your folder.
+   - Paste the code you just copied into the big box.
+   - Click "SAVE & CONNECT".
+
+6. ENABLE DATABASE (Critical Final Step!)
+   - Go back to the Firebase Console website.
+   - On the left menu, click "Build" -> "Realtime Database".
+   - Click "Create Database".
+   - Choose a location (Singapore or US is fine), click "Next".
+   - Choose "Start in Test Mode" (Select the second option).
+   - Click "Enable".
+
+DONE! Your website is now live and syncing.
