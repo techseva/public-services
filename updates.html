@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0D47A1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Smart Public Services - Updates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const localHidden = JSON.parse(localStorage.getItem('hiddenStaticItems')) || [];
+        if (localHidden.length > 0) {
+            let css = '';
+            localHidden.forEach(id => css += `[data-static-id="${id}"] { display:none !important; } `);
+            const style = document.createElement('style');
+            style.innerHTML = css;
+            document.head.appendChild(style);
+        }
+    </script>
+</head>
+
+<body data-context="updates">
+
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+
+
+
+
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-container" role="navigation" aria-label="Main navigation tabs">
+        <a href="updates.html" class="tab active" role="tab" aria-selected="true"
+            aria-label="Updates tab, currently active">UPDATES</a>
+        <a href="index.html" class="tab" role="tab" aria-selected="false" aria-label="Digital Services tab">DIGITAL
+            SERVICES</a>
+        <button id="syncBtn" class="text-button"
+            style="display: none; position: absolute; right: 8px; bottom: 8px; background: #FFC107; color: #000; padding: 4px 8px; font-size: 12px; border-radius: 4px; z-index: 1001;"
+            aria-label="Sync updates to cloud">SYNC</button>
+        <div class="tab-indicator" style="transform: translateX(0%); width: 50%;"></div>
+    </nav>
+
+
+    <!-- Main Content Area -->
+    <main class="view-container" id="main-content" role="main" aria-label="Updates main content">
+
+        <!-- WhatsApp Manamitra Section (Static Features) -->
+        <section class="whatsapp-section" aria-label="WhatsApp Manamitra service information">
+            <p class="whatsapp-title">
+                ఆంధ్రప్రదేశ్ ప్రభుత్వ <strong style="color:black;">మనమిత్ర WhatsApp సేవ</strong> ద్వారా ముఖ్యమైన
+                పౌరసేవలు మీ ఫోన్లో పొందండి దీనికోరకు ఈ క్రింది బటన్ నొక్కండి.
+            </p>
+            <a href="https://wa.me/919552300009" class="btn-whatsapp" target="_blank" role="button"
+                aria-label="Open WhatsApp Manamitra service, opens in new window">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+                Open Whatsapp Manamitra
+            </a>
+            <a href="https://wa.me/919552300009" class="whatsapp-link-text"
+                aria-label="Alternative link to open WhatsApp Manamitra">Open Whatsapp Manamitra</a>
+
+            <div class="note-text">
+                <strong>Note:</strong> The above link to WhatsApp chat redirects to official Government WhatsApp number
+                (+91 95523 000009) of Andhra Pradesh state used for various services provided to citizens through
+                Whatsapp E-Governance, the authenticity of the mobile number can be verified in the WhatsApp
+                application.
+            </div>
+        </section>
+
+        <!-- Updates List -->
+        <section id="updates-list" aria-label="List of government service updates">
+            <!-- Dynamic Updates will appear here first -->
+            <div id="dynamic-updates" aria-live="polite" aria-atomic="false"></div>
+
+            <!-- Static Updates from Image -->
+            <div class="update-card" data-static-id="static_VoterCardCorrectionSearch" role="article"
+                aria-label="Voter update announcement">
+                <h3>💥ఓటర్ అప్డేట్ !</h3>
+                <p>Posted on 23/09/2025 at 10.00 PM</p>
+                <div class="update-body">
+                    - <strong style="color:#d32f2f;">ఓటర్ లిస్ట్ లో మీ పేరు ఉందో లేదో ఈ క్రింది లింకు ద్వారా
+                        తెలుసుకోండి</strong>
+                    <a href="https://electoralsearch.eci.gov.in/" target="_blank">👉
+                        https://electoralsearch.eci.gov.in/</a>
+                </div>
+            </div>
+
+            <div class="update-card" data-static-id="static_AadharCardLinkStatus" role="article"
+                aria-label="Aadhaar card update announcement">
+                <h3>💥ఆధార్ కీలక అప్డేట్ !</h3>
+                <p>Posted on 22/09/2025 at 10.00 PM</p>
+                <div class="update-body">
+                    ☑️ మరోసారి గడువు పొడగించిన ఆధార్ సంస్థ. ఉచితంగా ఆధార్ అప్డేట్ చేసుకొనుటకు డిసెంబర్ 14 వరకు అవకాశం
+                    కల్పించారు.
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Floating Action Button -->
+    <div class="fab" id="addBtn" role="button" tabindex="0" aria-label="Add new update">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div class="modal" id="addModal" role="dialog" aria-labelledby="modal-header" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <h3 class="modal-header" id="modal-header">Add New Update</h3>
+            <div class="form-group">
+                <label>Heading (Title)</label>
+                <input type="text" id="inpTitle" placeholder="e.g., Alert">
+            </div>
+
+            <!-- Extra Field for Button Text (Hidden by default) -->
+            <div class="form-group" id="groupBtnText" style="display:none;">
+                <label>Button/Link Text</label>
+                <input type="text" id="inpBtnText" placeholder="Open Whatsapp Manamitra">
+            </div>
+
+            <div class="form-group">
+                <label>Subtitle (Description)</label>
+                <textarea id="inpBody" rows="4" placeholder="Enter details..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Link URL (Optional)</label>
+                <input type="text" id="inpLinkUrl" placeholder="https://...">
+            </div>
+
+            <div class="form-group">
+                <label>Open In</label>
+                <select id="inpOpenType" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd;">
+                    <option value="_blank">New Tab (External Browser)</option>
+                    <option value="_self">Inside App (Same Tab)</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancelBtn">Cancel</button>
+                <button class="btn-primary" id="saveBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
