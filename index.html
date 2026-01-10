@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0D47A1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>AP Digital Services</title>
+  <style>
+    body {
+      background-color: #004AAD;
+    }
+
+    /* Prevent white flash */
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-context="main">
+
+  <!-- Skip to main content link for screen readers -->
+  <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+  <!-- Navigation Tabs -->
+  <nav class="tabs-container" role="navigation" aria-label="Main navigation tabs">
+    <div class="tabs-row">
+      <div class="tab active" id="tab-updates" onclick="switchTab('updates')" role="tab" aria-selected="true"
+        aria-controls="section-updates" tabindex="0" aria-label="Updates tab">UPDATES</div>
+      <div class="tab" id="tab-services" onclick="switchTab('services')" role="tab" aria-selected="false"
+        aria-controls="section-services" tabindex="0" aria-label="Digital Services tab">DIGITAL SERVICES</div>
+      <div class="tab-indicator" id="tabIndicator"></div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="view-container" id="main-content" role="main" aria-label="Main content area">
+
+    <!-- Updates Section (Active by default) -->
+    <section id="section-updates" class="tab-content active" role="tabpanel" aria-labelledby="tab-updates"
+      aria-label="Updates section">
+      <div id="dynamic-updates" aria-live="polite" aria-atomic="false"></div>
+    </section>
+
+
+    <!-- Digital Services Section -->
+    <section id="section-services" class="tab-content" role="tabpanel" aria-labelledby="tab-services"
+      aria-label="Digital Services section">
+      <div id="dynamic-services" aria-live="polite" aria-atomic="false"></div>
+
+
+
+      <div class="service-card" onclick="window.location.href='gsws.html'" role="button" tabindex="0"
+        aria-label="Andhra Pradesh Services. Access all Andhra Pradesh government services and schemes">
+        <div class="card-content">
+          <h2 class="card-title" aria-label="Andhra Pradesh Services">Andhra Pradesh Services</h2>
+          <p class="card-subtitle" aria-label="Access all Andhra Pradesh government services and schemes">Access all
+            Andhra Pradesh government services and schemes</p>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='central-govt-services.html'" role="button" tabindex="0"
+        aria-label="Central Government Services. Access PM-KISAN, Ayushman Bharat, and other central schemes">
+        <div class="card-content">
+          <h2 class="card-title" aria-label="Central Government Services">Central Government Services</h2>
+          <p class="card-subtitle" aria-label="Access PM-KISAN, Ayushman Bharat, and other central schemes">Access
+            PM-KISAN, Ayushman Bharat, and other central schemes</p>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='aadhar-services.html'" role="button" tabindex="0"
+        aria-label="Aadhaar Services. Update Aadhar details and check status">
+        <div class="card-content">
+          <h2 class="card-title" aria-label="Aadhaar Services">Aadhaar Services</h2>
+          <p class="card-subtitle" aria-label="Update Aadhar details and check status">Update Aadhar details and check
+            status</p>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='electricity-services.html'" role="button" tabindex="0"
+        aria-label="Electricity Services. Pay bills and view usage history details">
+        <div class="card-content">
+          <h2 class="card-title" aria-label="Electricity Services">Electricity Services</h2>
+          <p class="card-subtitle" aria-label="Pay bills and view usage history details">Pay bills and view usage
+            history details</p>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='voter-services.html'" role="button" tabindex="0"
+        aria-label="Voter Card Services. Apply for voter card and check electoral status">
+        <div class="card-content">
+          <h2 class="card-title" aria-label="Voter Card Services">Voter Card Services</h2>
+          <p class="card-subtitle" aria-label="Apply for voter card and check electoral status">Apply for voter card and
+            check electoral status</p>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='pan-services.html'" role="button" tabindex="0"
+        aria-label="PAN Card Services. Apply for PAN card and track application status">
+        <div class="card-content">
+          <h2 class="card-title" aria-label="PAN Card Services">PAN Card Services</h2>
+          <p class="card-subtitle" aria-label="Apply for PAN card and track application status">Apply for PAN card and
+            track application status</p>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='banking-services.html'" role="button" tabindex="0"
+        aria-label="NPCI Payment Services. Access UPI, BHIM, RuPay, IMPS, and other NPCI services">
+        <div class="card-content">
+          <h2 class="card-title" aria-label="NPCI Payment Services">Banking Services</h2>
+          <p class="card-subtitle" aria-label="Access UPI, BHIM, RuPay, IMPS, and other NPCI services">Access UPI, BHIM,
+            RuPay, IMPS, and other NPCI services</p>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='editing-tools.html'" role="button" tabindex="0"
+        aria-label="Editing Tools. Access image editing, PDF creation, ID card generator, and document tools">
+        <div class="card-content">
+          <h2 class="card-title" aria-label="Editing Tools">Editing Tools</h2>
+          <p class="card-subtitle"
+            aria-label="Access image editing, PDF creation, ID card generator, and document tools">Access image editing,
+            PDF creation, ID card generator, and document tools</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Add Item Modal (Admin Mode Only) -->
+  <div class="modal" id="addModal" role="dialog" aria-labelledby="modal-title" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header" id="modal-title">Add Item</div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="inpTitle" placeholder="Post Title">
+        </div>
+
+        <div class="form-group" style="display: flex; gap: 10px;">
+          <div style="flex: 1;">
+            <label>Title Color</label>
+            <select id="inpTitleColor">
+              <option value="#004AAD">Royal Blue (Default)</option>
+              <option value="#0D47A1">Navy Blue</option>
+              <option value="#2E7D32">Success Green</option>
+              <option value="#8C0000">Maroon Red</option>
+              <option value="#000000">Classic Black</option>
+            </select>
+          </div>
+          <div style="flex: 1;">
+            <label>Bold Title?</label>
+            <div class="choice-group" data-target="inpTitleBold">
+              <div class="choice-box active" data-value="bold">Yes</div>
+              <div class="choice-box" data-value="normal">No</div>
+            </div>
+            <select id="inpTitleBold" style="display: none;">
+              <option value="bold">Yes</option>
+              <option value="normal">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Post Content</label>
+          <textarea id="inpText" rows="4" placeholder="Update details..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Action URL (Link)</label>
+          <input type="text" id="inpUrl" placeholder="https://example.com/apply">
+        </div>
+
+        <div class="form-group" style="display: flex; gap: 10px; align-items: flex-end;">
+          <div style="flex: 1;">
+            <label>Button Text</label>
+            <input type="text" id="inpButtonText" placeholder="Apply Now">
+          </div>
+          <div style="flex: 1;">
+            <label>Button Color</label>
+            <select id="inpButtonColor">
+              <option value="#0076FF">Azure Blue (Default)</option>
+              <option value="#1A237E">Sapphire</option>
+              <option value="#388E3C">Forest Green</option>
+              <option value="#D32F2F">Crimson</option>
+              <option value="#8C0000">Deep Maroon</option>
+              <option value="#FF9800">Warm Orange</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="display: flex; gap: 10px;">
+          <div style="flex: 1;">
+            <label>Button Style</label>
+            <div class="choice-group" data-target="inpBtnStyle">
+              <div class="choice-box active" data-value="solid">Solid</div>
+              <div class="choice-box" data-value="outlined">Outline</div>
+              <div class="choice-box" data-value="pill">Pill</div>
+              <div class="choice-box" data-value="gradient">Gradient</div>
+              <div class="choice-box" data-value="shadow">Modern</div>
+              <div class="choice-box" data-value="underline">Underline</div>
+            </div>
+            <select id="inpBtnStyle" style="display: none;">
+              <option value="solid">Solid</option>
+              <option value="outlined">Outlined</option>
+              <option value="pill">Pill</option>
+              <option value="gradient">Gradient</option>
+              <option value="shadow">Shadow</option>
+              <option value="underline">Underline</option>
+            </select>
+          </div>
+          <div style="flex: 1;">
+            <label>Alignment</label>
+            <div class="choice-group" data-target="inpBtnPos">
+              <div class="choice-box" data-value="flex-start">Left</div>
+              <div class="choice-box" data-value="center">Center</div>
+              <div class="choice-box active" data-value="flex-end">Right</div>
+            </div>
+            <select id="inpBtnPos" style="display: none;">
+              <option value="flex-start">Left</option>
+              <option value="center">Center</option>
+              <option value="flex-end">Right</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Text Format</label>
+          <div class="choice-group" data-target="inpBtnCase">
+            <div class="choice-box active" data-value="uppercase">UPPERCASE</div>
+            <div class="choice-box" data-value="none">Normal Case</div>
+          </div>
+          <select id="inpBtnCase" style="display: none;">
+            <option value="uppercase">UPPERCASE</option>
+            <option value="none">Normal Case</option>
+          </select>
+        </div>
+
+        <!-- Extra Links Section -->
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 2px dashed #EEE;">
+          <label
+            style="color: var(--primary-color); font-weight: 800; font-size: 14px; margin-bottom: 15px; display: block;">EXTRA
+            LINKS (BLUE LIST)</label>
+
+          <div class="form-group" style="display: flex; gap: 8px; margin-bottom: 12px;">
+            <input type="text" id="link1Title" placeholder="Link 1 Title" style="flex: 1;">
+            <input type="text" id="link1Url" placeholder="URL" style="flex: 1.5;">
+          </div>
+          <div class="form-group" style="display: flex; gap: 8px; margin-bottom: 12px;">
+            <input type="text" id="link2Title" placeholder="Link 2 Title" style="flex: 1;">
+            <input type="text" id="link2Url" placeholder="URL" style="flex: 1.5;">
+          </div>
+          <div class="form-group" style="display: flex; gap: 8px;">
+            <input type="text" id="link3Title" placeholder="Link 3 Title" style="flex: 1;">
+            <input type="text" id="link3Url" placeholder="URL" style="flex: 1.5;">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-secondary" id="cancelBtn">Cancel</button>
+        <button class="btn-primary" id="saveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Action Button -->
+  <div class="fab" id="addBtn" role="button" tabindex="0" aria-label="Add new update or service">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

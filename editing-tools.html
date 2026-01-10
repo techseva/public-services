@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0D47A1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Editing Tools - AP Digital Services</title>
+    <style>
+        body {
+            background-color: #004AAD;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Page Header */
+        .page-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #0D47A1 0%, #1976D2 100%);
+            color: white;
+            padding: 16px 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content */
+        .view-container {
+            padding-top: 70px !important;
+            padding-bottom: 20px;
+        }
+
+        /* Tool Categories */
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 12px 20px;
+            margin: 0 0 15px 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 4px solid #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Tool Cards */
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 0 15px 15px 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .tool-card:active {
+            transform: scale(0.98);
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0D47A1 0%, #1976D2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .tool-content {
+            flex: 1;
+        }
+
+        .tool-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0D47A1;
+            margin: 0 0 5px 0;
+        }
+
+        .tool-subtitle {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .tool-arrow {
+            color: #0D47A1;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 56px;
+            height: 56px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button:active {
+            transform: scale(0.95);
+        }
+
+        .back-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: #0D47A1;
+            stroke-width: 2.5;
+        }
+    </style>
+</head>
+
+<body data-context="sub">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        🛠️ Editing Tools
+    </div>
+
+    <!-- Main Content -->
+    <main class="view-container" role="main">
+
+        <!-- Image Tools -->
+        <div class="category-section">
+            <h2 class="category-title">📸 Image Tools</h2>
+
+            <div class="tool-card" onclick="window.location.href='camera 2side id card .html'">
+                <div class="tool-icon">🪪</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">ID Card Generator</h3>
+                    <p class="tool-subtitle">Create front & back ID card PDF from photos</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='image-editor.html'">
+                <div class="tool-icon">✂️</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">Image Editor</h3>
+                    <p class="tool-subtitle">Crop, resize, rotate, and adjust images</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='background-remover.html'">
+                <div class="tool-icon">🎨</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">Background Remover</h3>
+                    <p class="tool-subtitle">Remove background from images instantly</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='image-compressor.html'">
+                <div class="tool-icon">📦</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">Image Compressor</h3>
+                    <p class="tool-subtitle">Reduce image file size without quality loss</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+        </div>
+
+        <!-- PDF Tools -->
+        <div class="category-section">
+            <h2 class="category-title">📄 PDF Tools</h2>
+
+            <div class="tool-card" onclick="window.location.href='image-to-pdf.html'">
+                <div class="tool-icon">📸</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">Image to PDF</h3>
+                    <p class="tool-subtitle">Convert multiple images to a single PDF</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='pdf-merger.html'">
+                <div class="tool-icon">🔗</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">PDF Merger</h3>
+                    <p class="tool-subtitle">Combine multiple PDFs into one file</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='pdf-splitter.html'">
+                <div class="tool-icon">✂️</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">PDF Splitter</h3>
+                    <p class="tool-subtitle">Split PDF into separate pages or ranges</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='pdf-compressor.html'">
+                <div class="tool-icon">📦</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">PDF Compressor</h3>
+                    <p class="tool-subtitle">Reduce PDF file size for easy sharing</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+        </div>
+
+        <!-- Document Tools -->
+        <div class="category-section">
+            <h2 class="category-title">📝 Document Tools</h2>
+
+            <div class="tool-card" onclick="window.location.href='signature-maker.html'">
+                <div class="tool-icon">✍️</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">Signature Maker</h3>
+                    <p class="tool-subtitle">Create and save digital signatures</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='watermark-tool.html'">
+                <div class="tool-icon">💧</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">Watermark Tool</h3>
+                    <p class="tool-subtitle">Add text or image watermarks to documents</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='qr-generator.html'">
+                <div class="tool-icon">📱</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">QR Code Generator</h3>
+                    <p class="tool-subtitle">Generate QR codes for links, text, or contacts</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='barcode-generator.html'">
+                <div class="tool-icon">📊</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">Barcode Generator</h3>
+                    <p class="tool-subtitle">Create various types of barcodes</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+        </div>
+
+        <!-- Conversion Tools -->
+        <div class="category-section">
+            <h2 class="category-title">🔄 Conversion Tools</h2>
+
+            <div class="tool-card" onclick="window.location.href='format-converter.html'">
+                <div class="tool-icon">🔄</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">Format Converter</h3>
+                    <p class="tool-subtitle">Convert between JPG, PNG, WebP, and more</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+
+            <div class="tool-card" onclick="window.location.href='heic-converter.html'">
+                <div class="tool-icon">🍎</div>
+                <div class="tool-content">
+                    <h3 class="tool-title">HEIC to JPG</h3>
+                    <p class="tool-subtitle">Convert iPhone photos to JPG format</p>
+                </div>
+                <div class="tool-arrow">›</div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Back Button -->
+    <div class="back-button" onclick="window.history.back()" role="button" tabindex="0" aria-label="Go back">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
