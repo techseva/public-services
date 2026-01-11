@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#004AAD">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Banking Services</title>
+    <meta name="description"
+        content="Access NPCI payment services including UPI, BHIM, RuPay, IMPS, AePS, FASTag, and more">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const localHidden = JSON.parse(localStorage.getItem('hiddenStaticItems')) || [];
+        if (localHidden.length > 0) {
+            let css = '';
+            localHidden.forEach(id => css += `[data-static-id="${id}"] { display:none !important; } `);
+            const style = document.createElement('style');
+            style.innerHTML = css;
+            document.head.appendChild(style);
+        }
+    </script>
+</head>
+
+<body style="padding-top: 56px;" data-context="npci">
+
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+    <!-- Page Heading -->
+    <div
+        style="background: #004AAD; color: white; padding: 16px 20px; text-align: center; position: fixed; top: 0; left: 0; right: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h1 style="margin: 0; font-size: 20px; font-weight: 500;">Banking Services</h1>
+    </div>
+
+    <!-- Content -->
+    <main class="view-container" id="main-content" role="main" aria-label="Banking Services Main Content">
+        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 24px;">
+            <button id="syncBtn" class="text-button"
+                style="display: none; background: #FFC107; color: #000; border-radius: 8px; padding: 10px 20px;"
+                role="button" tabindex="0" aria-label="Sync services to cloud">SYNC TO
+                CLOUD</button>
+        </div>
+
+        <section aria-label="Banking Services Section">
+
+            <!-- NPCI Official Website -->
+            <div class="service-card" onclick="window.open('https://www.npci.org.in/', '_blank')" role="button"
+                tabindex="0" aria-label="NPCI Official Website. Visit National Payments Corporation of India portal">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="NPCI Official Website">NPCI Official Website</h2>
+                    <p class="card-subtitle" aria-label="Visit National Payments Corporation of India portal">National
+                        Payments Corporation of India - Official Portal</p>
+                </div>
+            </div>
+
+            <!-- Find IFSC And MICR Codes -->
+            <div class="service-card" onclick="window.open('https://www.policybazaar.com/ifsc/', '_blank')"
+                role="button" tabindex="0"
+                aria-label="Find IFSC And MICR Codes. Search bank IFSC and MICR codes for all Indian banks">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="Find IFSC And MICR Codes">Find IFSC And MICR Codes</h2>
+                    <p class="card-subtitle" aria-label="Search bank IFSC and MICR codes for all Indian banks">Search
+                        bank IFSC and MICR codes for all Indian banks</p>
+                </div>
+            </div>
+
+
+            <!-- UPI AutoPay - Show in One Place -->
+            <div class="service-card"
+                onclick="window.open('https://www.upihelp.npci.org.in/?utm_source=sp_auto_dm&utm_referrer=sp_auto_dm', '_blank')"
+                role="button" tabindex="0"
+                aria-label="UPI AutoPay - Show in One Place. View and manage all your UPI autopay mandates in one place">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="UPI AutoPay - Show in One Place">UPI AutoPay - Show in One Place
+                    </h2>
+                    <p class="card-subtitle" aria-label="View and manage all your UPI autopay mandates in one place">
+                        View and manage all your UPI autopay mandates in one place</p>
+                </div>
+            </div>
+
+
+            <!-- RuPay Cards -->
+            <div class="service-card" onclick="window.open('https://www.rupay.co.in/', '_blank')" role="button"
+                tabindex="0" aria-label="RuPay Cards. Information about RuPay debit and credit cards">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="RuPay Cards">RuPay Cards</h2>
+                    <p class="card-subtitle" aria-label="Information about RuPay debit and credit cards">India's own
+                        card payment network</p>
+                </div>
+            </div>
+
+            <!-- IMPS (Immediate Payment Service) -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/imps/product-overview', '_blank')"
+                role="button" tabindex="0"
+                aria-label="IMPS - Immediate Payment Service. Instant interbank electronic fund transfer">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="IMPS - Immediate Payment Service">IMPS - Immediate Payment
+                        Service</h2>
+                    <p class="card-subtitle" aria-label="Instant interbank electronic fund transfer">Instant 24x7
+                        interbank electronic fund transfer</p>
+                </div>
+            </div>
+
+            <!-- AePS (Aadhaar Enabled Payment System) -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/aeps/product-overview', '_blank')"
+                role="button" tabindex="0"
+                aria-label="AePS - Aadhaar Enabled Payment System. Banking services using Aadhaar">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="AePS - Aadhaar Enabled Payment System">AePS - Aadhaar Enabled
+                        Payment System</h2>
+                    <p class="card-subtitle" aria-label="Banking services using Aadhaar">Bank transactions using Aadhaar
+                        authentication</p>
+                </div>
+            </div>
+
+            <!-- NETC (National Electronic Toll Collection) -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/netc-fastag/product-overview', '_blank')"
+                role="button" tabindex="0" aria-label="NETC FASTag. National Electronic Toll Collection system">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="NETC FASTag">NETC FASTag</h2>
+                    <p class="card-subtitle" aria-label="National Electronic Toll Collection system">Electronic toll
+                        collection for seamless highway travel</p>
+                </div>
+            </div>
+
+            <!-- BBPS (Bharat Bill Payment System) -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/bbps/product-overview', '_blank')"
+                role="button" tabindex="0" aria-label="BBPS - Bharat Bill Payment System. Pay all bills at one place">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="BBPS - Bharat Bill Payment System">BBPS - Bharat Bill Payment
+                        System</h2>
+                    <p class="card-subtitle" aria-label="Pay all bills at one place">Integrated bill payment system for
+                        all utility bills</p>
+                </div>
+            </div>
+
+            <!-- UPI AutoPay -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/upi/upi-autopay', '_blank')" role="button"
+                tabindex="0" aria-label="UPI AutoPay. Set up recurring payments via UPI">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="UPI AutoPay">UPI AutoPay</h2>
+                    <p class="card-subtitle" aria-label="Set up recurring payments via UPI">E-mandate for recurring
+                        payments through UPI</p>
+                </div>
+            </div>
+
+            <!-- UPI Lite -->
+            <div class="service-card" onclick="window.open('https://www.npci.org.in/what-we-do/upi/upi-lite', '_blank')"
+                role="button" tabindex="0" aria-label="UPI Lite. Fast small value UPI transactions">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="UPI Lite">UPI Lite</h2>
+                    <p class="card-subtitle" aria-label="Fast small value UPI transactions">On-device wallet for small
+                        value UPI payments</p>
+                </div>
+            </div>
+
+            <!-- NACH (National Automated Clearing House) -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/nach/product-overview', '_blank')"
+                role="button" tabindex="0"
+                aria-label="NACH - National Automated Clearing House. Bulk payment and collection system">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="NACH - National Automated Clearing House">NACH - National
+                        Automated Clearing House</h2>
+                    <p class="card-subtitle" aria-label="Bulk payment and collection system">Centralized system for bulk
+                        transactions</p>
+                </div>
+            </div>
+
+            <!-- NFS (National Financial Switch) -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/nfs/product-overview', '_blank')" role="button"
+                tabindex="0" aria-label="NFS - National Financial Switch. ATM network connectivity">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="NFS - National Financial Switch">NFS - National Financial Switch
+                    </h2>
+                    <p class="card-subtitle" aria-label="ATM network connectivity">Largest ATM network in India</p>
+                </div>
+            </div>
+
+            <!-- UPI LITE X -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/upi/upi-lite-x', '_blank')" role="button"
+                tabindex="0" aria-label="UPI LITE X. Offline UPI payments">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="UPI LITE X">UPI LITE X</h2>
+                    <p class="card-subtitle" aria-label="Offline UPI payments">Offline payments without internet
+                        connectivity</p>
+                </div>
+            </div>
+
+            <!-- UPI International -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/upi/upi-international', '_blank')"
+                role="button" tabindex="0" aria-label="UPI International. Use UPI for international payments">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="UPI International">UPI International</h2>
+                    <p class="card-subtitle" aria-label="Use UPI for international payments">Make UPI payments
+                        internationally</p>
+                </div>
+            </div>
+
+            <!-- e-RUPI -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/e-rupi/product-overview', '_blank')"
+                role="button" tabindex="0" aria-label="e-RUPI. Digital voucher-based payment system">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="e-RUPI">e-RUPI</h2>
+                    <p class="card-subtitle" aria-label="Digital voucher-based payment system">Cashless and contactless
+                        digital payment voucher</p>
+                </div>
+            </div>
+
+            <!-- UPI 123PAY -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/upi/upi-123pay', '_blank')" role="button"
+                tabindex="0" aria-label="UPI 123PAY. UPI for feature phones">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="UPI 123PAY">UPI 123PAY</h2>
+                    <p class="card-subtitle" aria-label="UPI for feature phones">UPI payments for feature phone users
+                    </p>
+                </div>
+            </div>
+
+            <!-- UPI Statistics -->
+            <div class="service-card"
+                onclick="window.open('https://www.npci.org.in/what-we-do/upi/upi-ecosystem-statistics', '_blank')"
+                role="button" tabindex="0" aria-label="UPI Statistics. View UPI transaction statistics">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="UPI Statistics">UPI Statistics</h2>
+                    <p class="card-subtitle" aria-label="View UPI transaction statistics">Real-time UPI ecosystem
+                        statistics and data</p>
+                </div>
+            </div>
+
+            <!-- NPCI Bharat BillPay -->
+            <div class="service-card" onclick="window.open('https://www.bharatbillpay.com/', '_blank')" role="button"
+                tabindex="0" aria-label="Bharat BillPay Portal. Official bill payment portal">
+                <div class="card-content">
+                    <h2 class="card-title" aria-label="Bharat BillPay Portal">Bharat BillPay Portal</h2>
+                    <p class="card-subtitle" aria-label="Official bill payment portal">Official portal for all bill
+                        payments</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Floating Action Button -->
+    <div class="fab" id="addBtn" role="button" tabindex="0" aria-label="Add new NPCI service">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div class="modal" id="addModal" role="dialog" aria-labelledby="modalHeader" aria-modal="true">
+        <div class="modal-content">
+            <h3 class="modal-header" id="modalHeader">Add NPCI Service Link</h3>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inpTitle">Title</label>
+                    <input type="text" id="inpTitle" placeholder="e.g., UPI Service Name"
+                        aria-label="Enter NPCI service title" aria-required="true">
+                </div>
+
+                <div class="form-group" id="groupBtnText" style="display:none;">
+                    <label for="inpBtnText">Button/Link Text</label>
+                    <input type="text" id="inpBtnText" placeholder="Button Label" aria-label="Enter button label">
+                </div>
+
+                <div class="form-group">
+                    <label for="inpBody">Subtitle</label>
+                    <textarea id="inpBody" rows="2" placeholder="Short description..."
+                        aria-label="Enter service description" aria-required="true"></textarea>
+                </div>
+
+                <div class="form-group" id="groupLinkUrl">
+                    <label for="inpLinkUrl">Link URL</label>
+                    <input type="text" id="inpLinkUrl" placeholder="https://example.com"
+                        aria-label="Enter NPCI service URL" aria-required="true">
+                </div>
+
+                <div class="form-group" id="groupOpenType">
+                    <label for="inpOpenType">Open In</label>
+                    <select id="inpOpenType" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd;"
+                        aria-label="Select how to open the link">
+                        <option value="_blank">New Tab (External Browser)</option>
+                        <option value="_self">Inside App (Same Tab)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancelBtn" role="button" tabindex="0"
+                    aria-label="Cancel adding new service">Cancel</button>
+                <button class="btn-primary" id="saveBtn" role="button" tabindex="0"
+                    aria-label="Save new NPCI service">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
