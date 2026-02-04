@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermark Tool - AP Digital Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #e3f2fd;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #1565c0;
+        }
+
+        canvas {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 12px;
+        }
+
+        .control-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select,
+        input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: #1565c0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #0d47a1;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>💧 Watermark Tool</h1>
+        <p>Upload an image and add text watermark</p>
+
+        <input type="file" id="imageInput" accept="image/*" onchange="loadImage(event)">
+
+        <div id="editor" style="display: none; width: 100%;">
+            <canvas id="canvas"></canvas>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label for="watermarkText">Watermark Text</label>
+                    <input type="text" id="watermarkText" placeholder="Confidential" value="Confidential"
+                        oninput="draw()">
+                </div>
+                <div class="control-group">
+                    <label for="textColor">Color</label>
+                    <input type="color" id="textColor" value="#ffffff" oninput="draw()"
+                        style="height: 40px; padding: 2px;">
+                </div>
+                <div class="control-group">
+                    <label for="fontSize">Font Size</label>
+                    <input type="range" id="fontSize" min="10" max="200" value="48" oninput="draw()">
+                </div>
+                <div class="control-group">
+                    <label for="opacity">Opacity</label>
+                    <input type="range" id="opacity" min="0" max="1" step="0.1" value="0.5" oninput="draw()">
+                </div>
+                <div class="control-group">
+                    <label for="posX">Position X</label>
+                    <input type="range" id="posX" min="0" max="100" value="50" oninput="draw()">
+                </div>
+                <div class="control-group">
+                    <label for="posY">Position Y</label>
+                    <input type="range" id="posY" min="0" max="100" value="50" oninput="draw()">
+                </div>
+            </div>
+
+            <button class="btn" onclick="saveImage()">💾 Download Watermarked Image</button>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button" onclick="window.history.back()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let img = new Image();
+
+        function loadImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    draw();
+                    document.getElementById('editor').style.display = 'flex';
+                    document.getElementById('editor').style.flexDirection = 'column';
+                    document.getElementById('editor').style.alignItems = 'center';
+                }
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+
+            const text = document.getElementById('watermarkText').value;
+            const fontSize = document.getElementById('fontSize').value;
+            const color = document.getElementById('textColor').value;
+            const opacity = document.getElementById('opacity').value;
+            const posX = document.getElementById('posX').value;
+            const posY = document.getElementById('posY').value;
+
+            ctx.save();
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = color;
+            ctx.font = `bold ${fontSize}px sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Calculate absolute position based on percentage
+            const x = (canvas.width * posX) / 100;
+            const y = (canvas.height * posY) / 100;
+
+            ctx.fillText(text, x, y);
+            ctx.restore();
+        }
+
+        function saveImage() {
+            const link = document.createElement('a');
+            link.download = 'watermarked_image.png';
+            link.href = canvas.toDataURL();
+            link.click();
+            alert('Success! Image Saved Successfully.');
+        }
+    </script>
+</body>
+
+</html>
