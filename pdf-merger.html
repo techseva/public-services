@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PDF Merger - AP Digital Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- PDF-Lib for merging PDFs -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <!-- FileSaver for saving the file -->
+    <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0D47A1 0%, #1976D2 100%);
+            color: white;
+            padding: 16px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #0D47A1;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #1565C0;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .file-list {
+            margin: 20px 0;
+            text-align: left;
+            width: 100%;
+        }
+
+        .file-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .file-name {
+            font-size: 14px;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 80%;
+        }
+
+        .remove-btn {
+            color: #dc3545;
+            cursor: pointer;
+            padding: 4px;
+            font-size: 18px;
+        }
+
+        .status-message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+            min-height: 20px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        🔗 PDF Merger
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div style="font-size: 48px; margin-bottom: 16px;">📂</div>
+            <h3>Combine PDF Files</h3>
+            <p style="color: #666; margin-bottom: 24px;">Select multiple PDF files to merge them into a single document.
+            </p>
+
+            <input type="file" id="pdfInput" accept="application/pdf" multiple style="display: none;">
+            <button class="btn" onclick="document.getElementById('pdfInput').click()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14" />
+                </svg>
+                Select PDFs
+            </button>
+
+            <div class="file-list" id="fileList">
+                <!-- Files will appear here -->
+            </div>
+
+            <div id="actionArea" style="display: none;">
+                <p class="status-message" id="statusMessage"></p>
+                <div class="actions">
+                    <button class="btn btn-secondary" onclick="clearFiles()">Clear All</button>
+                    <button class="btn" onclick="mergePDFs()" id="mergeBtn">Merge PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button" onclick="window.history.back()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D47A1"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+    </div>
+
+    <script>
+        const pdfInput = document.getElementById('pdfInput');
+        const fileListContainer = document.getElementById('fileList');
+        const actionArea = document.getElementById('actionArea');
+        const statusMessage = document.getElementById('statusMessage');
+        const mergeBtn = document.getElementById('mergeBtn');
+
+        let selectedFiles = [];
+
+        pdfInput.addEventListener('change', (e) => {
+            const newFiles = Array.from(e.target.files);
+            if (newFiles.length > 0) {
+                selectedFiles = [...selectedFiles, ...newFiles];
+                updateFileList();
+            }
+            // Reset input so same files can be selected again if needed
+            pdfInput.value = '';
+        });
+
+        function updateFileList() {
+            fileListContainer.innerHTML = '';
+
+            if (selectedFiles.length === 0) {
+                actionArea.style.display = 'none';
+                return;
+            }
+
+            actionArea.style.display = 'block';
+            statusMessage.textContent = `${selectedFiles.length} file(s) selected`;
+
+            selectedFiles.forEach((file, index) => {
+                const div = document.createElement('div');
+                div.className = 'file-item';
+                div.innerHTML = `
+                    <span class="file-name">📄 ${file.name}</span>
+                    <span class="remove-btn" onclick="removeFile(${index})">×</span>
+                `;
+                fileListContainer.appendChild(div);
+            });
+        }
+
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            updateFileList();
+        }
+
+        function clearFiles() {
+            selectedFiles = [];
+            updateFileList();
+            statusMessage.textContent = '';
+        }
+
+        async function mergePDFs() {
+            if (selectedFiles.length < 2) {
+                alert("Please select at least 2 PDF files to merge.");
+                return;
+            }
+
+            mergeBtn.disabled = true;
+            mergeBtn.innerHTML = "Merging...";
+            statusMessage.textContent = "Processing... Please wait.";
+
+            try {
+                const PDFLib = window.PDFLib;
+                const mergedPdf = await PDFLib.PDFDocument.create();
+
+                for (const file of selectedFiles) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+
+                const mergedPdfBytes = await mergedPdf.save();
+
+                // Trigger Download
+                const blob = new Blob([mergedPdfBytes], { type: "application/pdf" });
+                saveAs(blob, "merged_document.pdf");
+
+                statusMessage.textContent = "✅ Done! Download started.";
+                statusMessage.style.color = "green";
+                alert("Success! PDF Merged Successfully.");
+            } catch (error) {
+                console.error("Merge Error:", error);
+                statusMessage.textContent = "❌ Error merging files. Check console.";
+                statusMessage.style.color = "red";
+            } finally {
+                mergeBtn.disabled = false;
+                mergeBtn.innerHTML = "Merge PDF";
+                setTimeout(() => {
+                    statusMessage.style.color = "#666";
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Converter - AP Digital Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #ede7f6;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #512da8;
+        }
+
+        .preview-img {
+            max-width: 100%;
+            max-height: 300px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            display: none;
+        }
+
+        select {
+            padding: 10px;
+            width: 100%;
+            margin: 15px 0;
+            border: 2px solid #512da8;
+            border-radius: 8px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: #512da8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #311b92;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔄 Format Converter</h1>
+        <p>Convert images to PNG, JPG, or WEBP</p>
+
+        <input type="file" id="fileInput" accept="image/*" onchange="loadImage(event)">
+
+        <img id="preview" class="preview-img">
+
+        <div id="controls" style="display: none;">
+            <p style="text-align: left; font-weight: bold; color: #555;">Convert to:</p>
+            <select id="formatSelect">
+                <option value="image/png">PNG</option>
+                <option value="image/jpeg">JPG</option>
+                <option value="image/webp">WEBP</option>
+            </select>
+            <button class="btn" onclick="convertAndDownload()">💾 Convert & Download</button>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button" onclick="window.history.back()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#512da8" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+    </div>
+
+    <script>
+        let originalImage = null;
+
+        function loadImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = new Image();
+                img.onload = function () {
+                    originalImage = img;
+                    const preview = document.getElementById('preview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'inline-block';
+                    document.getElementById('controls').style.display = 'block';
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function convertAndDownload() {
+            if (!originalImage) return;
+
+            const format = document.getElementById('formatSelect').value;
+            const ext = format.split('/')[1].replace('jpeg', 'jpg');
+
+            const canvas = document.createElement('canvas');
+            canvas.width = originalImage.width;
+            canvas.height = originalImage.height;
+            const ctx = canvas.getContext('2d');
+
+            // Fill white background for JPG in case of transparency
+            if (format === 'image/jpeg') {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            ctx.drawImage(originalImage, 0, 0);
+
+            const dataUrl = canvas.toDataURL(format, 0.9);
+            const link = document.createElement('a');
+            link.download = `converted_image.${ext}`;
+            link.href = dataUrl;
+            link.click();
+
+            alert('Success! Image Converted Successfully.');
+        }
+    </script>
+</body>
+
+</html>

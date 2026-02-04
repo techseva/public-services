@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEIC to JPG - AP Digital Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- HEIC to Any Library -->
+    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #fff8e1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #f57f17;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: #f57f17;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #e65100;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .preview-img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🍏 HEIC to JPG</h1>
+        <p>Convert iPhone/iPad photos to standard JPG</p>
+
+        <input type="file" id="heicInput" accept=".heic, .heif" onchange="convertHEIC(event)">
+
+        <div id="status">Select a HEIC file to begin</div>
+        <div id="resultArea"></div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button" onclick="window.history.back()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f57f17" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+    </div>
+
+    <script>
+        function convertHEIC(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const status = document.getElementById('status');
+            const resultArea = document.getElementById('resultArea');
+            status.textContent = "Converting... Please wait...";
+            status.style.color = "#f57f17";
+            resultArea.innerHTML = ""; // clear previous
+
+            heic2any({
+                blob: file,
+                toType: "image/jpeg",
+                quality: 0.8
+            })
+                .then(function (conversionResult) {
+                    // conversionResult is a Blob
+                    const url = URL.createObjectURL(conversionResult);
+
+                    status.textContent = "Conversion Complete!";
+                    status.style.color = "green";
+
+                    const img = document.createElement("img");
+                    img.src = url;
+                    img.className = "preview-img";
+                    resultArea.appendChild(img);
+
+                    const btn = document.createElement("button");
+                    btn.className = "btn";
+                    btn.textContent = "💾 Download JPG";
+                    btn.onclick = function () {
+                        const link = document.createElement("a");
+                        link.download = file.name.replace(/\.heic$/i, ".jpg");
+                        link.href = url;
+                        link.click();
+                        alert("Success! Image Converted and Downloaded Successfully.");
+                    };
+
+                    resultArea.appendChild(document.createElement("br"));
+                    resultArea.appendChild(btn);
+                })
+                .catch(function (e) {
+                    console.error(e);
+                    status.textContent = "Error converting file. Make sure it is a valid HEIC.";
+                    status.style.color = "red";
+                });
+        }
+    </script>
+</body>
+
+</html>
